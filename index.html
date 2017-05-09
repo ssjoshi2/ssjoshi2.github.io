@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Libraries -->
+  <title>Hybrid Storage</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-C0X5qw1DlkeV0RDunhmi4cUBUkPDTvUqzElcNWm1NI2T4k8tKMZ+wRPQOhZfSJ9N" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"/>
+  <script src="https://use.fontawesome.com/e15c57f273.js"></script>
+  <style>
+    body {
+      color: #000;
+      font-family: 'Karla';
+    }
+
+    .tree {
+      min-height:20px;
+      padding:19px;
+      margin-bottom:20px;
+      -webkit-border-radius:4px;
+      -moz-border-radius:4px;
+      border-radius:4px;
+      -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+      -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);
+      box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05)
+    }
+    .tree li {
+      list-style-type:none;
+      margin:0;
+      padding:10px 5px 0 5px;
+      position:relative
+    }
+    .tree li::before, .tree li::after {
+      content:'';
+      left:-20px;
+      position:absolute;
+      right:auto
+    }
+    .tree li::before {
+      border-left:1px solid #999;
+      bottom:50px;
+      height:100%;
+      top:0;
+      width:1px
+    }
+    .tree li::after {
+      border-top:1px solid #999;
+      height:20px;
+      top:25px;
+      width:25px
+    }
+    .tree li span {
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+      border:1px solid #999;
+      border-radius:5px;
+      display:inline-block;
+      padding:3px 8px;
+      text-decoration:none
+    }
+    .tree li.parent_li>span {
+      cursor:pointer
+    }
+    .tree>ul>li::before, .tree>ul>li::after {
+      border:0
+    }
+    .tree li:last-child::before {
+      height:30px
+    }
+    .tree li.parent_li>span:hover, .tree li.parent_li>span:hover+ul li span {
+      background:#eee;
+      border:1px solid #94a0b4;
+      color:#000
+    }
+  </style>
+
+
+
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" style = "font-family: 'Raleway', sans-serif;"> <i class="fa fa-folder-open-o" aria-hidden="true" ></i>
+         Hybrid Storage Box
+       </a>
+     </div>
+   </div>
+ </nav>
+ <div class="container" style="background: #fff;">
+   <div class="row">
+     <div class="tree">
+       <ul>
+        <li id = "io1" data-tot = "10240"><span><i class="fa fa-hdd-o" aria-hidden="true"></i> IO1 <br/>
+         Free space <span id = "io1-free" style="border: none;">5561</span>M
+       </span>
+       <ul id = "io1-child">
+        <li data-ac = "1229"><span><i class="fa fa-file-o" aria-hidden="true"></i> F1 <br/>
+          Size : 1229 M, Access count : 340
+        </span> </li>
+        <li data-ac = "800"><span><i class="fa fa-file-o" aria-hidden="true"></i> F2 <br/>
+          Size : 800 M, Access count : 326
+        </span></li>
+        <li data-ac = "2150" id = "f3"><span><i class="fa fa-file-o" aria-hidden="true"></i> F3<br/>
+          Size : 2150 M, Access count : 300
+        </span></li>
+        <li data-ac = "500"><span><i class="fa fa-file-o" aria-hidden="true"></i> F4<br/>
+          Size : 500 M, Access count : 315
+        </span></li>
+      </ul>
+    </li>
+    <li id = "gp2" data-tot = "5120"><span><i class="fa fa-hdd-o" aria-hidden="true"></i> GP2 <br/>
+      Free space <span id = "gp2-free" style="border: none;">212</span> M
+    </span>
+    <ul id = "gp2-child">
+      <li data-ac = "1843" id = "f5"><span><i class="fa fa-file-o" aria-hidden="true"></i> F5 <br/>
+        Size : 1843 M, Access count : 320
+      </span> </li>
+      <li data-ac = "1536" id = "f6"><span><i class="fa fa-file-o" aria-hidden="true"></i> F6 <br/>
+        Size : 1536 M, Access count : 198
+      </span></li>
+      <li data-ac = "300"><span><i class="fa fa-file-o" aria-hidden="true"></i> F7<br/>
+        Size : 300 M, Access count : 200
+      </span></li>
+      <li data-ac = "1229"><span><i class="fa fa-file-o" aria-hidden="true"></i> F8<br/>
+        Size : 1229 M, Access count : 210
+      </span></li>
+    </ul>
+  </li>
+  <li id = "st1" data-tot = "512000"><span><i class="fa fa-hdd-o" aria-hidden="true"></i> ST1 <br/>
+  Free space <span id = "st1-free" style="border: none;">504376</span> M </span>
+    <ul id = "st1-child">
+     <li data-ac = "1638"><span><i class="fa fa-file-o" aria-hidden="true"></i> F9 <br/>
+      Size : 1638 M, Access count : 160
+    </span> </li>
+    <li data-ac = "150"><span><i class="fa fa-file-o" aria-hidden="true"></i> F10 <br/>
+      Size : 150 M, Access count : 140
+    </span></li>
+    <li data-ac = "3174"><span><i class="fa fa-file-o" aria-hidden="true"></i> F11<br/>
+      Size : 3174 M, Access count : 156
+    </span></li>
+    <li data-ac = "2662"><span><i class="fa fa-file-o" aria-hidden="true"></i> F12<br/>
+      Size : 2662 M, Access count : 180
+    </span></li>
+  </ul>
+</li>
+<li id = "sc1" data-tot = "512000"><span><i class="fa fa-hdd-o" aria-hidden="true"></i> SC1 <br/>
+Free space <span id = "sc1-free" style="border: none;">505198</span> M </span>
+  <ul>
+   <li data-ac = "350"><span><i class="fa fa-file-o" aria-hidden="true"></i> F13 <br/>
+    Size : 350 M, Access count : 130
+  </span> </li>
+  <li data-ac = "2458"><span><i class="fa fa-file-o" aria-hidden="true"></i> F114 <br/>
+    Size : 2458 M, Access count : 180
+  </span></li>
+  <li data-ac = "1741"><span><i class="fa fa-file-o" aria-hidden="true"></i> F15<br/>
+    Size : 1741 M, Access count : 177
+  </span></li>
+  <li data-ac = "1126" id = "f16"><span><i class="fa fa-file-o" aria-hidden="true"></i> F16<br/>
+    Size : 1126 M, Access count : 200
+  </span></li>
+</ul>
+</li>
+
+</ul>
+</div>
+<script type="text/javascript">
+
+
+ setTimeout(function() { 
+  $('#sc1').find('span').first().delay(10000).css('background','#eaeaea');
+  setTimeout(function() { $('#f16').find('span').first().delay(10000).css('background','#92e450');
+    setTimeout(function() { $('#f16').fadeOut(function(){ $('#f16').appendTo('#st1-child')}); $('#f16').fadeIn(function() {
+      $('#sc1-free').html(parseInt($('#sc1-free').html()) + parseInt($('#f16').attr('data-ac')));
+      $('#st1-free').html(parseInt($('#st1-free').html()) - parseInt($('#f16').attr('data-ac')));
+      $('#f16').find('span').first().delay(10000).css('background','#fff');
+      $('#sc1').find('span').first().delay(10000).css('background','#fff');
+    }); 
+    setTimeout(function() { $('#st1').find('span').first().delay(10000).css('background','#eaeaea');
+      setTimeout(function() { $('#f16').find('span').first().delay(10000).css('background','#92e450'); 
+        setTimeout(function() { $('#gp2').find('span').first().delay(10000).css('background','#ffbb3e');
+          setTimeout(function() { $('#f6').find('span').first().delay(10000).css('background','#ffcac4');
+            setTimeout(function() { $('#f6').fadeOut(function() { $('#f6').appendTo('#st1-child'); 
+              $('#gp2-free').html(parseInt($('#gp2-free').html()) + parseInt($('#f6').attr('data-ac')));
+              setTimeout(function() {  $('#f6').fadeIn(function() {
+                $('#st1-free').html(parseInt($('#st1-free').html()) - parseInt($('#f6').attr('data-ac')));
+                $('#f6').find('span').first().delay(10000).css('background','#fff');
+                $('#gp2').find('span').first().delay(10000).css('background','#fff');
+              });
+              //GP2
+              setTimeout(function() {
+                $('#f16').fadeOut(function() { $('#f16').appendTo('#gp2-child');});
+                $('#st1-free').html(parseInt($('#st1-free').html()) + parseInt($('#f16').attr('data-ac')));
+                setTimeout(function(){$('#f16').fadeIn(function() {
+                  $('#f16').find('span').first().delay(10000).css('background','#fff'); 
+                  $('#gp2-free').html(parseInt($('#gp2-free').html()) - parseInt($('#f16').attr('data-ac')));
+                });
+                setTimeout(function() {$('#st1').find('span').first().delay(10000).css('background','#fff');
+                  setTimeout(function() { $('#gp2').find('span').first().delay(10000).css('background','#eaeaea');
+                    setTimeout(function() { 
+                      $('#f5').find('span').first().delay(10000).css('background','#92e450');
+                //IO1
+                setTimeout(function() {
+                         $('#f5').fadeOut(function() { $('#f5').appendTo('#io1-child');});
+                         $('#gp2-free').html(parseInt($('#gp2-free').html()) + parseInt($('#f5').attr('data-ac')));
+                          setTimeout(function() { $('#f5').fadeIn(function(){
+                            $('#io1-free').html(parseInt($('#io1-free').html()) - parseInt($('#f5').attr('data-ac')));
+                          $('#f5').find('span').first().delay(10000).css('background','#fff'); 
+                          $('#gp2').find('span').first().delay(10000).css('background','#fff'); 
+                          });}, 2000);
+                        }, 2000); 
+
+              },2000);  
+                  },2000);
+                }, 2000);  
+              }, 2000);
+              }, 2000);
+            }, 2000);
+            });},2000);
+          }, 2000);
+        },2000);
+      }, 2000);
+    },2000);
+
+  }, 2000);
+  }, 2000);
+
+}, 3000);
+
+ 
+
+
+
+</script>
+
+</div>
+</div>
+
+</body>
+</html>
